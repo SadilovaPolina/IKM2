@@ -17,17 +17,19 @@ int main() {
         string input;
         getline(cin, input);
 
+        // Проверка на пустой ввод
         if (input.empty()) {
             throw runtime_error("Не было введено ни одного слова!");
         }
 
+        // Сохранение исходного ввода
         saveToFile("a.txt", input);
 
         vector<string> words = split(input);
         ListChain chain(words);
 
         if (chain.buildChain()) {
-            chain.print("b.txt");
+            chain.print("b.txt"); // Сохранение результата
             cout << "Цепочка слов успешно построена и сохранена в файл b.txt" << endl;
             cout << "результат: ";
             for (const string& word : chain.Result()) {
